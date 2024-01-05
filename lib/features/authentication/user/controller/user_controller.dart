@@ -7,28 +7,20 @@ class UserController extends GetxController {
 
   final _db = FirebaseFirestore.instance;
 
+  Future<bool> doesUserExist(String phoneNumber) async {
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+        .collection("Users")
+        .where('phone', isEqualTo: phoneNumber)
+        .get();
+    return querySnapshot.docs.isNotEmpty;
+  }
+
   createUser(UserModel user) async {
     await _db
         .collection("Users")
         .add(user.toJson())
-        // .whenComplete(
-        //   () => Get.snackbar(
-        //     "Success",
-        //     "Your account has been created",
-        //     snackPosition: SnackPosition.BOTTOM,
-        //     backgroundColor: Colors.green.withOpacity(0.1),
-        //     colorText: Colors.green,
-        //   ),
-        // )
+
         // ignore: body_might_complete_normally_catch_error
-        .catchError((error, stackTrace) {
-      // Get.snackbar(
-      //   'Error',
-      //   'Something went wrong, Try again',
-      //   snackPosition: SnackPosition.BOTTOM,
-      //   backgroundColor: Colors.green.withOpacity(0.1),
-      //   colorText: Colors.red,
-      // );
-    });
+        .catchError((error, stackTrace) {});
   }
 }

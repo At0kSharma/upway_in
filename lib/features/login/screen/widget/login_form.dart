@@ -75,6 +75,7 @@ class LoginForm extends StatelessWidget {
                   userName: controller.name.text.trim(),
                   phoneNumber: phoneNumber,
                   registrationDate: Timestamp.now(),
+                  isOTPVerified: false,
                 );
                 LoginController.instance.createUser(user);
               }

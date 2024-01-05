@@ -13,8 +13,14 @@ class LoginController extends GetxController {
 
   Future<void> createUser(UserModel user) async {
     phoneAuthentication(user.phoneNumber);
-    await userRepo.createUser(user);
-    Get.to(() => const VerifyScreen());
+    if (await userRepo.doesUserExist(user.phoneNumber)) {
+      // print("user exists redirecting to next page");
+      Get.to(() => const VerifyScreen());
+    } else {
+      // print("user does not exists creating new user");
+      await userRepo.createUser(user);
+      Get.to(() => const VerifyScreen());
+    }
   }
 
   void phoneAuthentication(String phoneNumber) {

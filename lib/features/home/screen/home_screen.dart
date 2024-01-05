@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:upway_in/features/home/controller/homepage_view_controller.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -10,7 +10,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-final FirebaseAuth _auth = FirebaseAuth.instance;
+// final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class _HomeScreenState extends State<HomeScreen> {
   late final WebViewController controller;
@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     controller = WebViewController()
       ..loadRequest(
-        Uri.parse('https://uiux.llc/'),
+        Uri.parse('https://google.com/'),
       );
   }
 
@@ -63,4 +63,4 @@ class _HomeScreenState extends State<HomeScreen> {
 
 // Future<String?> _getCurrentUserId() async {
 //   User? user = _auth.currentUser;
-//   return user?.phoneNumber;
+//   return user?.phoneNumber;}
