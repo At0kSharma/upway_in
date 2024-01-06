@@ -13,8 +13,6 @@ class VerifyController extends GetxController {
     var isVerified = await AuthenticationController.instance.verifyOTP(otp);
     if (isVerified) {
       final currentUser = await _getCurrentUserId();
-      print("currentUser###############################################");
-      print(currentUser);
       await UpdateOTPController.instance
           .updateOTPStatus(currentUser.toString());
       Get.offAll(const HomeScreen());

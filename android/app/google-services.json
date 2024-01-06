@@ -1,13 +1,32 @@
 {
   "project_info": {
-    "project_number": "45231595498",
-    "project_id": "upway-app-c112e",
-    "storage_bucket": "upway-app-c112e.appspot.com"
+    "project_number": "45014825199",
+    "project_id": "upway-c4a7d",
+    "storage_bucket": "upway-c4a7d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:45231595498:android:f8c1b61e17fce2a5a81c93",
+        "mobilesdk_app_id": "1:45014825199:android:eb6035279d85e3d4abc31a",
+        "android_client_info": {
+          "package_name": "com.example.upway_in"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcUqiEZLaeOPUUPwMf7z5opj9NCs0XwFI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:45014825199:android:42394d07cf1c7b70abc31a",
         "android_client_info": {
           "package_name": "com.upway.afzal"
         }
@@ -15,7 +34,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCXYAy9eT3aOoODv9VJV_CA98vqf_EoEtY"
+          "current_key": "AIzaSyAcUqiEZLaeOPUUPwMf7z5opj9NCs0XwFI"
         }
       ],
       "services": {

@@ -11,6 +11,14 @@ class AdminLogin extends StatefulWidget {
 }
 
 class _AdminLoginState extends State<AdminLogin> {
+  @override
+  void initState() {
+    super.initState();
+    // Clear the text fields when the screen is loaded
+    controller.email.text = '';
+    controller.password.text = '';
+  }
+
   bool _obscureText = true;
   final controller = Get.put(AdminLoginController());
   final formKey = GlobalKey<FormState>();
@@ -78,9 +86,9 @@ class _AdminLoginState extends State<AdminLogin> {
               const SizedBox(height: 12),
               ElevatedButton(
                 onPressed: () {
-                  AdminLoginController.instance.signUpWithEmailAndPassword(
+                  AdminLoginController.instance.authenticateAdminUser(
                       controller.email.text.trim(),
-                      controller.password.toString());
+                      controller.password.text.trim());
                 },
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size.fromHeight(60),
