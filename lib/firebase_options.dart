@@ -53,10 +53,10 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAcUqiEZLaeOPUUPwMf7z5opj9NCs0XwFI',
-    appId: '1:45014825199:android:eb6035279d85e3d4abc31a',
-    messagingSenderId: '45014825199',
-    projectId: 'upway-c4a7d',
-    storageBucket: 'upway-c4a7d.appspot.com',
+    apiKey: 'AIzaSyCXYAy9eT3aOoODv9VJV_CA98vqf_EoEtY',
+    appId: '1:45231595498:android:f8c1b61e17fce2a5a81c93',
+    messagingSenderId: '45231595498',
+    projectId: 'upway-app-c112e',
+    storageBucket: 'upway-app-c112e.appspot.com',
   );
 }

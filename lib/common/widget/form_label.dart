@@ -4,14 +4,16 @@ class FormLabel extends StatelessWidget {
   const FormLabel({
     super.key,
     required this.label,
+    required this.leftPadding,
   });
 
   final String label;
+  final double leftPadding;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 25.0),
+      padding: EdgeInsets.only(left: leftPadding),
       child: Row(
         children: [
           const CustomBox(),
@@ -39,7 +41,7 @@ class CustomBox extends StatelessWidget {
       height: 25,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5.0),
-        color: const Color(0xFF849AD4),
+        color: const Color(0xFF83A2FF),
       ),
     );
   }

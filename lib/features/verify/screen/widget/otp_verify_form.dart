@@ -18,13 +18,13 @@ class OtpVerifyForm extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const FormLabel(label: "Enter Your  OTP Here"),
+          const FormLabel(label: "Enter Your  OTP Here", leftPadding: 5),
           const SizedBox(height: 10),
           OtpTextField(
             numberOfFields: 6,
             fieldWidth: HelperFunctions.screenWidth() * 0.125,
             enabledBorderColor: const Color.fromARGB(115, 155, 154, 154),
-            focusedBorderColor: const Color(0xFF849AD4),
+            focusedBorderColor: const Color(0xFF83A2FF),
             //set to true to show as box or false to show as dash
             showFieldAsBox: true,
             //runs when a code is typed in
@@ -44,7 +44,7 @@ class OtpVerifyForm extends StatelessWidget {
             },
             style: ElevatedButton.styleFrom(
               fixedSize: const Size(340, 60),
-              backgroundColor: const Color(0xFF849AD4),
+              backgroundColor: const Color(0xFF83A2FF),
               foregroundColor: Colors.white,
               textStyle: const TextStyle(
                 fontWeight: FontWeight.w600,

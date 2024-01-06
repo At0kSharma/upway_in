@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     controller = WebViewController()
       ..loadRequest(
-        Uri.parse('https://google.com/'),
+        Uri.parse('https://upway.in/'),
       );
   }
 
@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
       // ),
       appBar: AppBar(
         toolbarHeight: 0.0,
-        backgroundColor: const Color(0xFF849AD4),
+        backgroundColor: const Color(0xFF83A2FF),
       ),
       // ignore: deprecated_member_use
       body: WillPopScope(

@@ -21,7 +21,7 @@ class LoginForm extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(height: 20),
-          const FormLabel(label: "Enter Your Name Here"),
+          const FormLabel(label: "Enter Your Name Here", leftPadding: 25),
           const SizedBox(height: 10),
           SizedBox(
             width: 340.0,
@@ -36,14 +36,15 @@ class LoginForm extends StatelessWidget {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: Color(0xFF849AD4),
+                    color: Color(0xFF83A2FF),
                   ),
                 ),
               ),
             ),
           ),
           const SizedBox(height: 20),
-          const FormLabel(label: "Enter Your  Mobile Number Here"),
+          const FormLabel(
+              label: "Enter Your  Mobile Number Here", leftPadding: 25),
           const SizedBox(height: 10),
           SizedBox(
             width: 340,
@@ -58,7 +59,7 @@ class LoginForm extends StatelessWidget {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: Color(0xFF849AD4),
+                    color: Color(0xFF83A2FF),
                   ),
                 ),
               ),
@@ -82,7 +83,7 @@ class LoginForm extends StatelessWidget {
             },
             style: ElevatedButton.styleFrom(
               fixedSize: const Size(340, 60),
-              backgroundColor: const Color(0xFF849AD4),
+              backgroundColor: const Color(0xFF83A2FF),
               foregroundColor: Colors.white,
               textStyle: const TextStyle(
                 fontWeight: FontWeight.w600,

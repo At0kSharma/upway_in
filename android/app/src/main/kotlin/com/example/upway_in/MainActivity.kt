@@ -1,4 +1,4 @@
-package com.example.upway_in
+package com.upway.afzal
 
 import io.flutter.embedding.android.FlutterActivity
 
