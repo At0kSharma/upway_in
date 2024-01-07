@@ -7,10 +7,16 @@ import 'package:get/get.dart';
 class DashboardController extends GetxController {
   static DashboardController get instance => Get.find();
   final selectedDate = TextEditingController();
+  final RxBool isLoading = false.obs;
   final RxList<Map<String, dynamic>> userJsonList =
       <Map<String, dynamic>>[].obs;
-  final RxBool isLoading = false.obs;
   int get numberOfUsers => userJsonList.length;
+  final RxList<Map<String, dynamic>> todayUserJsonList =
+      <Map<String, dynamic>>[].obs;
+  int get numberOfUsersToday => todayUserJsonList.length;
+  final RxList<Map<String, dynamic>> yesterdayUserJsonList =
+      <Map<String, dynamic>>[].obs;
+  int get numberOfUsersYesterday => yesterdayUserJsonList.length;
 
   Future<void> getAllUserList() async {
     try {
@@ -36,17 +42,12 @@ class DashboardController extends GetxController {
     }
   }
 
-  // Fetch data from Firestore based on selected date
-  Future<void> getDataFromSelectedDate() async {
-    final selectedDateString = selectedDate.text.trim();
-
-    // Convert the selected date string to a DateTime
-    final selectedDateTime = DateTime.parse(selectedDateString);
-
-    // Get the start and end of the selected date
-    final DateTime startOfDay = DateTime(
-        selectedDateTime.year, selectedDateTime.month, selectedDateTime.day);
-    final DateTime endOfDay = startOfDay.add(const Duration(days: 1));
+  // Fetch today's users
+  Future<void> getTodayUserList() async {
+    final DateTime now = DateTime.now();
+    final startOfDay = DateTime(now.year, now.month, now.day);
+    final endOfDay = startOfDay.add(const Duration(days: 1));
+    print(startOfDay);
 
     try {
       isLoading(true);
@@ -59,13 +60,46 @@ class DashboardController extends GetxController {
           .get();
 
       // Clear the previous data
-      userJsonList.clear();
+      todayUserJsonList.clear();
 
       // Iterate through the documents and handle the data as needed
       // Iterate through the documents and add them to the userJsonList
       querySnapshot.docs.forEach((DocumentSnapshot document) {
         final data = document.data() as Map<String, dynamic>;
-        userJsonList.add(data);
+        todayUserJsonList.add(data);
+        // print(userJsonList);
+      });
+      isLoading(false);
+    } catch (error) {
+      // Handle any errors that might occur
+      print('Error fetching data: $error');
+    }
+  }
+
+  // Fetch yesterday's users
+  Future<void> getYesterdayUserList() async {
+    final DateTime now = DateTime.now();
+    final startOfDay = DateTime(now.year, now.month, now.day - 1);
+    final endOfDay = startOfDay.add(const Duration(days: 1));
+
+    try {
+      isLoading(true);
+      // Query Firestore to get documents where registrationDate is within the selected date
+      final QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('Users')
+          .where('registrationDate',
+              isGreaterThanOrEqualTo: Timestamp.fromDate(startOfDay))
+          .where('registrationDate', isLessThan: Timestamp.fromDate(endOfDay))
+          .get();
+
+      // Clear the previous data
+      yesterdayUserJsonList.clear();
+
+      // Iterate through the documents and handle the data as needed
+      // Iterate through the documents and add them to the userJsonList
+      querySnapshot.docs.forEach((DocumentSnapshot document) {
+        final data = document.data() as Map<String, dynamic>;
+        yesterdayUserJsonList.add(data);
         // print(userJsonList);
       });
       isLoading(false);

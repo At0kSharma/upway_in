@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:upway_in/features/dashboard/screen/dashboard_screen.dart';
+import 'package:upway_in/features/admin/screen/admin_login_screen.dart';
 
 class AdminLoginBtn extends StatelessWidget {
   const AdminLoginBtn({
@@ -14,7 +14,7 @@ class AdminLoginBtn extends StatelessWidget {
       right: 16, // Adjust the distance from the right as needed
       child: FloatingActionButton(
         onPressed: () {
-          Get.offAll(() => const DashboardScreen());
+          Get.offAll(() => const AdminLogin());
         },
         backgroundColor: const Color(0xFF83A2FF),
         child: const Icon(
