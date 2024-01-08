@@ -15,10 +15,8 @@ class OtpVerifyForm extends StatelessWidget {
     var otp;
     return Form(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const FormLabel(label: "Enter Your  OTP Here", leftPadding: 5),
+          const FormLabel(label: "Enter Your  OTP Here", leftPadding: 25),
           const SizedBox(height: 10),
           OtpTextField(
             numberOfFields: 6,

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:upway_in/features/dashboard/screen/dashboard_screen.dart';
@@ -9,18 +10,26 @@ class AdminLoginBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 16, // Adjust the distance from the bottom as needed
-      right: 16, // Adjust the distance from the right as needed
-      child: FloatingActionButton(
+    return Padding(
+      padding: const EdgeInsets.only(top: 50.0, left: 135, right: 135),
+      child: ElevatedButton(
         onPressed: () {
           Get.offAll(() => const DashboardScreen());
         },
-        backgroundColor: const Color(0xFF83A2FF),
-        child: const Icon(
-          Icons.dashboard,
-          color: Colors.white,
+        style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.all(0),
+          minimumSize: const Size(100, 40),
+          foregroundColor: const Color(0xFF83A2FF),
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          textStyle: const TextStyle(
+            fontWeight: FontWeight.w400,
+            fontSize: 12.0,
+          ),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
         ),
+        child: const Text("Dashboard"),
       ),
     );
   }

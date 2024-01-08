@@ -7,11 +7,14 @@ class VerifyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // String otp;
-    return const Scaffold(
-      body: Stack(
-        children: [
-          OtpVerifyForm(),
-        ],
+    return Scaffold(
+      body: Center(
+        child: ListView(
+          shrinkWrap: true,
+          children: const [
+            OtpVerifyForm(),
+          ],
+        ),
       ),
     );
   }
