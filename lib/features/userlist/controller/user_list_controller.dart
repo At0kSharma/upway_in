@@ -30,6 +30,7 @@ class UserListController extends GetxController {
       // Query Firestore to get documents where registrationDate is within the selected date
       final QuerySnapshot querySnapshot = await FirebaseFirestore.instance
           .collection('Users')
+          .where('isVerified', isEqualTo: true)
           .where('registrationDate',
               isGreaterThanOrEqualTo: Timestamp.fromDate(startOfDay))
           .where('registrationDate', isLessThan: Timestamp.fromDate(endOfDay))

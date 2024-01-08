@@ -14,24 +14,25 @@ class DatePickerForm extends StatelessWidget {
     // bool isDateSelected = false;
     return TextFormField(
       controller: controller.selectedDate,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         labelText: "Date",
         filled: true,
-        prefixIcon: const Icon(Icons.calendar_today),
-        suffixIcon: IconButton(
-            onPressed: () {
-              if (controller.selectedDate.text != "") {
-                Get.to(() => const UserListScreen());
-              }
-            },
-            icon: const Icon(Icons.search)),
+        prefixIcon: Icon(Icons.calendar_today),
+        // suffixIcon: IconButton(
+        //   onPressed: () {
+        //     if (controller.selectedDate.text != "") {
+        //       Get.to(() => const UserListScreen());
+        //     }
+        //   },
+        //   icon: const Icon(Icons.search),
+        // ),
         fillColor: Colors.transparent,
-        enabledBorder: const OutlineInputBorder(
+        enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: Color(0xFF83A2FF),
           ),
         ),
-        focusedBorder: const OutlineInputBorder(
+        focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: Color(0xFF83A2FF),
           ),
@@ -55,6 +56,7 @@ class DatePickerForm extends StatelessWidget {
     if (_picked != null) {
       // print(controller.selectedDate.text);
       controller.selectedDate.text = _picked.toString().split(" ")[0];
+      Get.to(() => const UserListScreen());
       // isDateSelected = true;
       // UserListController.instance.getDataFromSelectedDate();
     }

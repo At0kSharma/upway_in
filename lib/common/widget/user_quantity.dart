@@ -45,7 +45,13 @@ class UserQuantity extends StatelessWidget {
                       );
                     }
                     if (userJsonList.isEmpty) {
-                      return const Text('0');
+                      return const Text(
+                        '0',
+                        style: TextStyle(
+                          fontSize: 48,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      );
                     } else {
                       return Text(
                         userJsonList.length.toString(),

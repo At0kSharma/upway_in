@@ -27,6 +27,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
     await controller.getYesterdayUserList();
   }
 
+// Method to handle pull-to-refresh
+  Future<void> _handleRefresh() async {
+    await _loadInitialData();
+  }
+
   @override
   Widget build(BuildContext context) {
     final yesterdayUserList =
@@ -40,6 +45,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
         titleTextStyle: const TextStyle(color: Colors.white, fontSize: 18),
         iconTheme: const IconThemeData(color: Colors.white),
         actions: [
+          // IconButton(
+          //   onPressed: () {
+          //     _handleRefresh();
+          //   },
+          //   icon: const Icon(Icons.refresh),
+          // ),
           IconButton(
               onPressed: () {
                 Get.offAll(() => const LoginScreen());
@@ -48,9 +59,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
           const Padding(padding: EdgeInsets.only(right: 10)),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
+      body: RefreshIndicator(
+        onRefresh: _handleRefresh,
+        child: ListView(
+          padding: const EdgeInsets.only(
+            top: 20,
+            left: 46,
+            right: 46,
+          ),
           children: [
             DatePickerForm(),
             const SizedBox(height: 20),

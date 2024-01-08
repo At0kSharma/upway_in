@@ -11,39 +11,37 @@ class UserListTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: DataTable(
-        // decoration: BoxDecoration(border: Border.all(color: Colors.black38)),
-        columnSpacing: 80.0,
-        columns: const [
-          DataColumn(
-              label: Text(
-            'Name',
-            style: TextStyle(fontSize: 16),
-          )),
-          DataColumn(
-              label: Text(
-            'Phone',
-            style: TextStyle(fontSize: 16),
-          )),
-        ],
-        rows: userJsonList
-            .map(
-              (userJson) => DataRow(
-                cells: [
-                  DataCell(Text(
-                    userJson['name'],
-                    style: const TextStyle(fontSize: 15),
-                  )),
-                  DataCell(Text(
-                    userJson['phone'],
-                    style: const TextStyle(fontSize: 15),
-                  )),
-                ],
-              ),
-            )
-            .toList(),
-      ),
+    return DataTable(
+      // decoration: BoxDecoration(border: Border.all(color: Colors.black38)),
+      columnSpacing: 80.0,
+      columns: const [
+        DataColumn(
+            label: Text(
+          'Name',
+          style: TextStyle(fontSize: 16),
+        )),
+        DataColumn(
+            label: Text(
+          'Phone',
+          style: TextStyle(fontSize: 16),
+        )),
+      ],
+      rows: userJsonList
+          .map(
+            (userJson) => DataRow(
+              cells: [
+                DataCell(Text(
+                  userJson['name'],
+                  style: const TextStyle(fontSize: 15),
+                )),
+                DataCell(Text(
+                  userJson['phone'],
+                  style: const TextStyle(fontSize: 15),
+                )),
+              ],
+            ),
+          )
+          .toList(),
     );
   }
 }

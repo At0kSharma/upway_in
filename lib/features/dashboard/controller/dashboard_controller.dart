@@ -22,8 +22,10 @@ class DashboardController extends GetxController {
     try {
       isLoading(true);
       // Query Firestore to get documents where registrationDate is within the selected date
-      final QuerySnapshot querySnapshot =
-          await FirebaseFirestore.instance.collection('Users').get();
+      final QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('Users')
+          .where('isVerified', isEqualTo: true)
+          .get();
 
       // Clear the previous data
       userJsonList.clear();
@@ -54,6 +56,7 @@ class DashboardController extends GetxController {
       // Query Firestore to get documents where registrationDate is within the selected date
       final QuerySnapshot querySnapshot = await FirebaseFirestore.instance
           .collection('Users')
+          .where('isVerified', isEqualTo: true)
           .where('registrationDate',
               isGreaterThanOrEqualTo: Timestamp.fromDate(startOfDay))
           .where('registrationDate', isLessThan: Timestamp.fromDate(endOfDay))
@@ -87,6 +90,7 @@ class DashboardController extends GetxController {
       // Query Firestore to get documents where registrationDate is within the selected date
       final QuerySnapshot querySnapshot = await FirebaseFirestore.instance
           .collection('Users')
+          .where('isVerified', isEqualTo: true)
           .where('registrationDate',
               isGreaterThanOrEqualTo: Timestamp.fromDate(startOfDay))
           .where('registrationDate', isLessThan: Timestamp.fromDate(endOfDay))
