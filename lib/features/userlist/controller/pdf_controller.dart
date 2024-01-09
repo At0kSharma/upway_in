@@ -83,7 +83,7 @@ class PdfController extends GetxController {
       final File file = File(path);
 
       await file.writeAsBytes(await pdf.save());
-      print("Path " + path);
+      // print("Path " + path);
 
       // Provide a message to the user that the download is complete
       Get.snackbar('Download Complete',
