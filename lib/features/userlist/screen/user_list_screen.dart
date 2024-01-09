@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:upway_in/common/widget/user_quantity.dart';
 import 'package:upway_in/features/login/screen/login_screen.dart';
+import 'package:upway_in/features/userlist/controller/pdf_controller.dart';
 import 'package:upway_in/features/userlist/controller/user_list_controller.dart';
 import 'package:upway_in/features/userlist/screen/widget/fetch_user_list.dart';
 
@@ -18,6 +19,8 @@ class _UserListScreenState extends State<UserListScreen> {
   final controller = Get.put(UserListController());
   final TextEditingController searchController = TextEditingController();
   List<Map<String, dynamic>> filteredUserJsonList = [];
+
+  final userListOnSelectedDate = UserListController.instance.userJsonList;
 
   @override
   void initState() {
@@ -49,7 +52,6 @@ class _UserListScreenState extends State<UserListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final userListOnSelectedDate = UserListController.instance.userJsonList;
     final filteredUserOnSelectedDateJsonList = filteredUserJsonList.isEmpty
         ? UserListController.instance.userJsonList
         : filteredUserJsonList;
@@ -121,7 +123,10 @@ class _UserListScreenState extends State<UserListScreen> {
                     ),
                   ),
                   IconButton(
-                    onPressed: () async {},
+                    onPressed: () {
+                      PdfController.instance
+                          .generatePdfFile(userListOnSelectedDate);
+                    },
                     icon: const Icon(Icons.picture_as_pdf),
                   ),
                 ],
