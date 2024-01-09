@@ -46,6 +46,8 @@ dependencies:
 
   crypto: ^3.0.1
   pdf: ^3.10.7
+  path_provider: ^2.1.1
+  pdf_viewer_plugin: ^2.0.1
 
 dev_dependencies:
   flutter_test:
@@ -72,6 +74,7 @@ flutter:
   assets:
     - assets/splash/splashimage.png
     - assets/logo/upway_logo.png
+    - assets/fonts/Lato-Regular.ttf
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -86,9 +89,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   # fonts:
-  #   - family: Schyler
+  #   - family: Lato
   #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: assets/fonts/Lato-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

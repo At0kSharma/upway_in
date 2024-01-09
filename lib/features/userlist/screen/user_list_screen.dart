@@ -16,6 +16,8 @@ class UserListScreen extends StatefulWidget {
 
 class _UserListScreenState extends State<UserListScreen> {
   final controller = Get.put(UserListController());
+  final TextEditingController searchController = TextEditingController();
+  List<Map<String, dynamic>> filteredUserJsonList = [];
 
   @override
   void initState() {
@@ -27,9 +29,31 @@ class _UserListScreenState extends State<UserListScreen> {
     await controller.getDataFromSelectedDate();
   }
 
+  void _searchUsers() {
+    final String searchQuery = searchController.text.toLowerCase();
+
+    if (searchQuery.isNotEmpty) {
+      // Filter the userJsonList based on the search query
+      filteredUserJsonList = UserListController.instance.userJsonList
+          .where((user) =>
+              user['name'].toLowerCase().contains(searchQuery) ||
+              user['phone'].toLowerCase().contains(searchQuery))
+          .toList();
+    } else {
+      // If the search query is empty, reset the filtered list
+      filteredUserJsonList.clear();
+    }
+
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     final userListOnSelectedDate = UserListController.instance.userJsonList;
+    final filteredUserOnSelectedDateJsonList = filteredUserJsonList.isEmpty
+        ? UserListController.instance.userJsonList
+        : filteredUserJsonList;
+
     final currentDate = controller.selectedDate.text;
     return Scaffold(
       appBar: AppBar(
@@ -68,42 +92,48 @@ class _UserListScreenState extends State<UserListScreen> {
             ),
             Container(
               margin: const EdgeInsets.only(top: 20),
-              padding: const EdgeInsets.all(5),
+              padding: const EdgeInsets.all(0),
               height: 50,
-              width: 300,
-              // decoration: BoxDecoration(
-              //   border: Border.all(color: const Color(0xFF83A2FF)),
-              //   borderRadius: BorderRadius.circular(10),
-              // ),
+              width: 330,
+              decoration: BoxDecoration(
+                border: Border.all(color: const Color(0xFF83A2FF)),
+                borderRadius: BorderRadius.circular(10),
+              ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.download),
-                    label: const Text("PDF"),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF83A2FF),
-                      foregroundColor: Colors.white,
+                  SizedBox(
+                    width: 260,
+                    child: TextField(
+                      controller: searchController,
+                      onChanged: (value) {
+                        _searchUsers();
+                      },
+                      decoration: InputDecoration(
+                        labelText: 'Search...',
+                        suffixIcon: const Icon(Icons.search),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: BorderSide.none),
+                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                      ),
                     ),
                   ),
-                  // const SizedBox(width: 10),
-                  // ElevatedButton.icon(
-                  //   onPressed: () {},
-                  //   icon: const Icon(Icons.download),
-                  //   label: const Text("CSV"),
-                  //   style: ElevatedButton.styleFrom(
-                  //     backgroundColor: const Color(0xFF83A2FF),
-                  //     foregroundColor: Colors.white,
-                  //   ),
-                  // ),
+                  IconButton(
+                    onPressed: () async {},
+                    icon: const Icon(Icons.picture_as_pdf),
+                  ),
                 ],
               ),
             ),
             Container(
               alignment: Alignment.center,
-              margin: const EdgeInsets.only(top: 20),
-              child: FetchUserList(controller: controller),
+              margin: const EdgeInsets.all(30),
+              // child: FetchUserList(controller: controller),
+              child: FetchUserList(
+                  filteredUserOnSelectedDateJsonList:
+                      filteredUserOnSelectedDateJsonList),
             ),
           ],
         ),

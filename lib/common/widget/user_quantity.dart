@@ -17,7 +17,7 @@ class UserQuantity extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 160,
-      width: 300,
+      width: 330,
       decoration: BoxDecoration(
         border: Border.all(color: const Color(0xFF83A2FF)),
         borderRadius: BorderRadius.circular(20),
@@ -29,7 +29,7 @@ class UserQuantity extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              width: 280,
+              width: 300,
               height: 100,
               decoration: BoxDecoration(
                 border: Border.all(color: const Color(0xFF83A2FF)),

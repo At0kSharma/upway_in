@@ -64,8 +64,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
         child: ListView(
           padding: const EdgeInsets.only(
             top: 20,
-            left: 46,
-            right: 46,
+            left: 30,
+            right: 30,
           ),
           children: [
             DatePickerForm(),
