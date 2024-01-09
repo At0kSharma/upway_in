@@ -61,7 +61,7 @@ class PdfController extends GetxController {
 
     // Get the external storage directory
     // final Directory? externalDir = await getExternalStorageDirectory();
-    final Directory? externalDir = await getDownloadsDirectory();
+    final Directory? externalDir = await getExternalStorageDirectory();
 
     if (externalDir != null) {
       // Save the PDF file to the external directory

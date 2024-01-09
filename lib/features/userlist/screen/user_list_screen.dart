@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:upway_in/common/widget/user_quantity.dart';
 import 'package:upway_in/features/login/screen/login_screen.dart';
+import 'package:upway_in/features/userlist/controller/csv_controller.dart';
 import 'package:upway_in/features/userlist/controller/pdf_controller.dart';
 import 'package:upway_in/features/userlist/controller/user_list_controller.dart';
 import 'package:upway_in/features/userlist/screen/widget/fetch_user_list.dart';
@@ -106,7 +107,7 @@ class _UserListScreenState extends State<UserListScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: 260,
+                    width: 200,
                     child: TextField(
                       controller: searchController,
                       onChanged: (value) {
@@ -121,6 +122,13 @@ class _UserListScreenState extends State<UserListScreen> {
                         floatingLabelBehavior: FloatingLabelBehavior.never,
                       ),
                     ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      CsvController.instance
+                          .generateCsvFile(userListOnSelectedDate);
+                    },
+                    icon: const Icon(Icons.download_rounded),
                   ),
                   IconButton(
                     onPressed: () {

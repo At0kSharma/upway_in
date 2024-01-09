@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:upway_in/features/admin/screen/admin_login_screen.dart';
 import 'package:upway_in/features/dashboard/screen/dashboard_screen.dart';
 
 class AdminLoginBtn extends StatelessWidget {
@@ -14,7 +15,7 @@ class AdminLoginBtn extends StatelessWidget {
       padding: const EdgeInsets.only(top: 50.0, left: 135, right: 135),
       child: ElevatedButton(
         onPressed: () {
-          Get.offAll(() => const DashboardScreen());
+          Get.offAll(() => const AdminLogin());
         },
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.all(0),

@@ -4,6 +4,7 @@ import 'package:upway_in/features/authentication/authentication_controller.dart'
 import 'package:upway_in/features/authentication/user/controller/user_controller.dart';
 import 'package:upway_in/features/home/controller/update_otp_status.dart';
 import 'package:upway_in/features/login/controller/login_controller.dart';
+import 'package:upway_in/features/userlist/controller/csv_controller.dart';
 import 'package:upway_in/features/userlist/controller/pdf_controller.dart';
 import 'package:upway_in/features/userlist/controller/user_list_controller.dart';
 import 'package:upway_in/features/verify/controller/verify_controller.dart';
@@ -14,6 +15,7 @@ class GlobalBindings extends Bindings {
     Get.put<UpdateOTPController>(UpdateOTPController(), permanent: true);
     Get.put<AdminLoginController>(AdminLoginController(), permanent: true);
     Get.put<PdfController>(PdfController(), permanent: true);
+    Get.put<CsvController>(CsvController(), permanent: true);
     Get.put<UserController>(UserController(), permanent: true);
     Get.put<UserListController>(UserListController(), permanent: true);
     Get.put<VerifyController>(VerifyController(), permanent: true);
