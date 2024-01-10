@@ -1,6 +1,7 @@
 # upway_in
 
-A new Flutter project.
+A Android App
+- PlayStore (https://play.google.com/store/apps/details?id=com.upway.afzal)
 
 ## Getting Started
 
